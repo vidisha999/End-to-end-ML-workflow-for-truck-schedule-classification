@@ -2,20 +2,19 @@
 
 ## Project Overview and  Architecture 
 
-
-I.  *Cloud-Native Data Foundation:*
+ I.  *Cloud-Native Data Foundation:*
 
   PostgreSQL and MySQL databases were deployed on AWS RDS to establish a robust and scalable data infrastructure. This setup enables structured data storage, fast SQL-based querying, and seamless integration with other AWS services and downstream analytics workflows. This supports real-time insights on the incoming streaming data.
 
-II. *Exploratory Data Analysis (EDA):*
+ II. *Exploratory Data Analysis (EDA):*
 
   EDA was performed using AWS SageMaker notebooks, connected directly to the RDS-hosted databases. This phase involved thorough data exploration, cleaning, and validation. The refined dataset was then stored in **Hopsworks Feature Store** for centralized access and reuse.
 
-III. *Feature Engineering :*
+ III. *Feature Engineering :*
   
   Cleaned data was retrieved from Hopsworks to perform preprocessing and feature engineering .Multiple data sources were merged to construct a final feature-rich DataFrame capturing key factors influencing truck delays. The engineered features were saved back to the Feature Store to ensure consistency and accessibility.
 
-IV. *Model-Ready Dataset Preparation :*
+ IV. *Model-Ready Dataset Preparation :*
 
   The final dataset was retrieved from Hopsworks and split into training, validation, and test sets. Further preprocessing included one-hot encoding of categorical variables and scaling of numerical features to prepare the data for machine learning models.
 
@@ -34,6 +33,21 @@ VII. *Application Deployment :*
 VIII. *Monitoring and Automation:*
 
   Model monitoring was implemented to detect data and concept drift. CI/CD practices were integrated for automated deployment, and Amazon SageMaker Pipelines were used to orchestrate the end-to-end machine learning workflow. This ensures reliability, scalability, and operational efficiency in real-world logistics scenarios.
+
+
+## Data
+The original raw datasets are stored in two SQL databases. 
+The PostgreSQL database had the store the tables ; `routes_details` and `routes_weather`:  
+
+   -  routes-details: Information about truck routes, including origin, destination, distance, and travel time
+   -  routes_weather: Weather conditions specific to each route.
+
+The MySQL database had store the tables: `drivers_details1`,`city_weather`,`truck_detais`,`traffic_details`,`truck_Schedule_data`:
+   -  drivers_details: Details about truck drivers, including names and experience
+   -  city_weather: Weather data for various cities
+   -  truck_details: Information about the trucks used in logistics operations
+   -  traffic_details: Traffic-related data
+   -  truck_schedule_data: Schedules and timing information for trucks
 
 
 
