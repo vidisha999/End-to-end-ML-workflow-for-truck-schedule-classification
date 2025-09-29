@@ -1,6 +1,6 @@
 ## 
 
-## Project Overview and  Architecture 
+## Project Architecture 
 
  I.  *Cloud-Native Data Foundation:*
 
