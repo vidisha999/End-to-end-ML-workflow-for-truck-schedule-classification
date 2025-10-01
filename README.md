@@ -55,7 +55,7 @@ The MySQL database had store the tables: `drivers_details1`,`city_weather`,`truc
 
 ## Model Monitoring and Automation 
 
-This section outlines setting up the end to end machine learning pipeline within SageMaker Studio (Unified Experience),by implementing model monitoring, CI/CD practices, and Amazon SageMaker Pipelines for improved reliability and efficiency. It simulates the ingestion of streaming data into the pipeline, performs data drift and model drift detection, triggers automated model retraining and evaluation, and schedules SageMaker Pipeline executions to maintain model freshness and reliability.
+This section outlines setting up the end to end machine learning pipeline within SageMaker Studio (Unified Experience),by implementing model monitoring, CI/CD practices, and Amazon SageMaker Pipelines for improved reliability and efficiency. It simulates the ingestion of streaming data into the pipeline, performs data drift and model drift detection, triggers automated model retraining and evaluation, and schedules SageMaker Pipeline executions to maintain model freshness and reliability. 
 
 
 
