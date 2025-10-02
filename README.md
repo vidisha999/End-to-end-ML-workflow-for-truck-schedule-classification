@@ -60,6 +60,28 @@ This section outlines setting up the end to end machine learning pipeline within
 The automated SageMaker pipeline was built using the SageMaker Python SDK. The **get_pipeline** function of the [pipeline.py](Pipeline/Sagemaker_Pipeline/pipeline.py) represents the end-to-end workflow of each step executed within the pipeline. It captures key stages providing a structured and reproducible framework for machine learning operations. The process workflow shows the steps used in the pipeline.
 ![image](Pipeline/pipeline-structure.png)
 
+Model retraining is executed on a weekly basis, specifically on the first day of each week. The retraining process is initiated when either data drift or model drift is detected, following the ingestion of incoming streaming data into Hopsworks. To simulate the retraining pipeline with incoming streaming data, historical data from 01/01/2019 to 02/15/2019 was used, while data from 02/15/2019 to 02/28/2019 was treated as streaming data. For the streaming simulation, time-sensitive information was considered: traffic and weather forecast data was ingested into the feature store on a weekly basis, while truck schedule data was ingested daily. This setup ensured that the drift detection pipeline was triggered weekly.
+
+### Data Drift and Model Drift
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
