@@ -62,10 +62,15 @@ The automated SageMaker pipeline was built using the SageMaker Python SDK. The *
 
 Model retraining is executed on a weekly basis, specifically on the first day of each week. The retraining process is initiated when either data drift or model drift is detected, following the ingestion of incoming streaming data into Hopsworks. To simulate the retraining pipeline with incoming streaming data, historical data from 01/01/2019 to 02/15/2019 was used, while data from 02/15/2019 to 02/28/2019 was treated as streaming data. For the streaming simulation, time-sensitive information was considered: traffic and weather forecast data was ingested into the feature store on a weekly basis, while truck schedule data was ingested daily. This setup ensured that the drift detection pipeline was triggered weekly.
 
-### Data Drift and Model Drift
+### Model monitoring 
 
+There are several ways to monitor the model in order to determine if the model should be retrained. 
+1. Data Quality checks : Ensure data reliability, detect missing values and duplicates or schema inconsistencies in the incoming streaming data.
+2. Data Drift detection : Detect change in  statistical properties of feataure distribution of the incoming data when compared with the historical data.
+3. Model drift detection : Detect declination of the performance of the model overtime due to chnage of the underlying data or envionmental factors.
 
-
+ #### Evidendently AI 
+In this project, Evidently AI is used to perform model monitoring checks. It is an open-source Python library that compares new incoming data (streaming or batch) against reference data (historical or training data) to detect data drift, target drift, missing values, or changes in feature distributions, and to validate ML model performance. The library comes with built-in tests for each of these activities, automatically analyzing data and model predictions, generating clear metrics and visual reports. This enables teams to quickly identify issues, ensure data consistency, and maintain reliable model performance without writing custom checks.
 
 
 
