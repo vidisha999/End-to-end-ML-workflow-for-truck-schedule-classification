@@ -98,9 +98,13 @@ The start date for the streaming data should be 02/15/2019. So, flag `is_15` is 
 As the streaming was done on the first day of the week. A flag`first_day_of_the_week` is set to check if the `weekly_streaming` value of the CONSTANTS table is 1. Then the straming dataframes are updated to include the 7 days of the current week, which starts from the midnight of the first day and ends on the midnight of the 6 th day. After processing, the `weekly_streaming` column in the constants table is incremented by 1, marking progression to the next day in the week. If the counter reaches &, it marks the end  of the week and `weekly_streaming` column is reset to 1, for the new week.For any other day in the week, the counter is incremented by 1 to move to the next day. This upates to the constants table keeps track of the current day of the weekly streaming cycle, allowing the pipeline to know which part of the week it is processing.
 
 
-5. 
+5. Setting weekly drift pipeline: 
 
+It sets a flag to determine whether the weekly drift pipeline should be triggered. The trigger depends on two conditions; if the both flags `first_day_of_the_week` and `not_15`  were true.It uUpdates the constants table column `is_first_day_of_new_week` to "True" and  signals downstream processes that it’s time to run the weekly drift pipeline.
 
+6. Updates MySQL and PostgreSQL RDS tables:
+
+Creates a connection to the MySQL  and PostgreSQL databases.Appends weekly streaming data frames to the corresponding tables in the SQL databases if the day is first day of the week. Daily streaming schedule data is updated daily to the MySQL RDS table. The `day` counter in constants is incremented to track progression through the weekly cycle.
 
 
 
