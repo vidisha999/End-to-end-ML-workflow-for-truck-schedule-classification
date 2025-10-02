@@ -107,6 +107,7 @@ It sets a flag to determine whether the weekly drift pipeline should be triggere
 Creates a connection to the MySQL  and PostgreSQL databases.Appends weekly streaming data frames to the corresponding tables in the SQL databases if the day is first day of the week. Daily streaming schedule data is updated daily to the MySQL RDS table. The `day` counter in constants is incremented to track progression through the weekly cycle.
 
 7. Update Delay for Previous Day:
+
 The goal is to compare the streaming (latest) schedule values against the persisted RDS truck_schedule_data for the previous day and recompute an updated delay and then write the updated delays back to the database. The logic is run only when the flag `not_15` to True, to ensure only the streaming data which was collected after 02/15/2019 is considered. It updates the delay value of the truck_schedule_data table in the postgreSQL database with the matched records from streaming data, with same route_id, truck_id and departure_date.
 
 
