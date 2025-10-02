@@ -73,14 +73,32 @@ There are several ways to monitor the model in order to determine if the model s
 In this project, Evidently AI is used to perform model monitoring checks. It is an open-source Python library that compares new incoming data (streaming or batch) against reference data (historical or training data) to detect data drift, target drift, missing values, or changes in feature distributions, and to validate ML model performance. The library comes with built-in tests for each of these activities, automatically analyzing data and model predictions, generating clear metrics and visual reports. This enables teams to quickly identify issues, ensure data consistency, and maintain reliable model performance without writing custom checks.
 
 
+### Automation for Sagemaker Pipeline Execution 
+
+#### Lambda Function 
+
+AWS lambda service is a serverless compute service that automatically scales and executes the logic in response to events.It's triggered by events like S3 uploads, API Gateway calls, DynamoDB updates, CloudWatch schedules. In this project lambda function is use to ingest and preprocess streaming data, update RDS tables, trigger weekly drift detection logic and automate daily data updates without manual intervention.
+
+ 1. Retrive Control parameters:
+
+The 'CONSTANT" table created in the postgre SQL database stores the control paramters needed for the streaming activities. It incldues  count of data records for each streaming dataframes; `routes_weather`, `truck_schedule_data`, `traffic_details`, `city_weather` , boolean column  `is_first_day_of_new_week`  to check the start of the week, `week_start_date` to store the date when the week begins, `day` to track the current day of the week, boolean column weekly streaming `weekly_streaming`  to denote whether weekly streaming is enabled. 
+Lambada function creates a connection to the postgreSQL database using psycopg2 to retrieve the data from this table.
 
 
+2. Downloads daily streaming data from  S3 :
+
+Creates a boto3 client to S3 bucket and downloads the daily streaming files from the S3 bucket.It then downloads the daily streaming files from S3 into the temporary /tmp/ directory of the Lambda container.After downloading, the files are loaded into pandas DataFrames, allowing structured in-memory data manipulation and further processing within the Lambda function.
+
+3. Filters date range from the streaming data :
+
+The start date for the streaming data should be 02/15/2019. So, flag `is_15` is set to check if the start date is 02/15/2019 and different times are used to ensure the streaming data covers only the intended window for that day. If the date is 02/15/2019, only data from 6 AM to 6PM is consideredd as it might have incomplete data in the early hours, so starting at 6 AM ensures consistency.For other days, the system can process from midnight to 6 PM.This ensures your streaming pipeline doesn’t process irrelevant or missing data outside the intended time window.
+
+4. Filters the first day of the week :
+
+As the streaming was done on the first day of the week. A flag`first_day_of_the_week` is set to check if the `weekly_streaming` value of the CONSTANTS table is 1. Then the straming dataframes are updated to include the 7 days of the current week, which starts from the midnight of the first day and ends on the midnight of the 6 th day. After processing, the `weekly_streaming` column in the constants table is incremented by 1, marking progression to the next day in the week. If the counter reaches &, it marks the end  of the week and `weekly_streaming` column is reset to 1, for the new week.For any other day in the week, the counter is incremented by 1 to move to the next day. This upates to the constants table keeps track of the current day of the weekly streaming cycle, allowing the pipeline to know which part of the week it is processing.
 
 
-
-
-
-
+5. 
 
 
 
