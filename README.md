@@ -79,9 +79,9 @@ In this project, Evidently AI is used to perform model monitoring checks. It is 
 
 AWS lambda service is a serverless compute service that automatically scales and executes the logic in response to events.It's triggered by events like S3 uploads, API Gateway calls, DynamoDB updates, CloudWatch schedules. In this project lambda function is use to ingest and preprocess streaming data, update RDS tables, trigger weekly drift detection logic and automate daily data updates without manual intervention.
 
-The Lambda function is triggered automatically using Amazon EventBridge. A scheduled rule is configured to invoke the function at a specified time each day, ensuring consistent execution of the streaming data pipeline.
+The Lambda function handles fetching streaming data from S3, performing SQL inserts and updates, and setting flags to indicate whether the streaming pipeline should be executed. It is automatically triggered by Amazon EventBridge, with a scheduled rule set to invoke the function at a specified time each day, ensuring all necessary tasks for the consistent execution of the streaming data pipeline are completed.
 
- 1. Retrive Control parameters:
+1. Retrive Control parameters:
 
 The 'CONSTANT" table created in the postgre SQL database stores the control paramters needed for the streaming activities. It incldues  count of data records for each streaming dataframes; `routes_weather`, `truck_schedule_data`, `traffic_details`, `city_weather` , boolean column  `is_first_day_of_new_week`  to check the start of the week, `week_start_date` to store the date when the week begins, `day` to track the current day of the week, boolean column weekly streaming `weekly_streaming`  to denote whether weekly streaming is enabled. 
 Lambada function creates a connection to the postgreSQL database using psycopg2 to retrieve the data from this table.
