@@ -121,5 +121,14 @@ In Unified Studio, the SageMaker pipeline is developed within a single notebook 
 
 Running a SageMaker pipeline step inside a Docker image provides a custom environment where all required Python packages, dependencies, and system libraries can be pre-installed, eliminating reliance on SageMaker’s default setup. This ensures consistency and reproducibility across runs, which is especially important for production ML pipelines handling continuous streaming data. Using a Docker image also simplifies CI/CD integration, as the image can be built, tested, and pushed to ECR through CodePipeline, allowing SageMaker to pull a fully tested environment for each pipeline execution.
 
+#### SageMaker Pipeline Deployment with AWS CodePipeline for CI/CD
 
+To establish a CI/CD pipeline for a SageMaker pipeline using AWS CodePipeline, the first step is to version the SageMaker pipeline code in an AWS CodeCommit repository. Subsequently, a CodeBuild project is created  in AWS CodeBuild to install the necessary dependencies and execute a deployment script (e.g., pipeline.upsert()) to create or update the SageMaker pipeline.
 
+Following this, a CodePipeline is  created  in AWS CodePipeline configure it with three primary stages: a *source stage* linked to the CodeCommit repository with automatic change detection, a *build stage* that utilizes the CodeBuild project to deploy the pipeline, and an optional deploy stage for any additional actions if required. 
+
+Once the pipeline is configured, any commit to the Codecommit repository automatically triggers CodePipeline and execute or update the pipeline in SageMaker (via pipeline.upsert(), This ensurres that the SageMaker pipeline remains consistently updated with the latest code.
+
+#### Scheduling and execution of the Sagemaker Pipeline 
+
+Once the pipeline is deployed and registered in SageMaker, EventBridge handles when the pipeline runs.AWS EventBridge is used to schedule the SageMaker pipeline using a custom CRON expression, enabling automated and recurring execution of the latest version of the pipeline without manual intervention.
