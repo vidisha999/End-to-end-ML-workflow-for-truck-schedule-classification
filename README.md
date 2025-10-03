@@ -113,11 +113,11 @@ Creates a connection to the MySQL  and PostgreSQL databases.Appends weekly strea
 The goal is to compare the streaming (latest) schedule values against the persisted RDS truck_schedule_data for the previous day and recompute an updated delay and then write the updated delays back to the database. The logic is run only when the flag `not_15` to True, to ensure only the streaming data which was collected after 02/15/2019 is considered. It updates the delay value of the truck_schedule_data table in the postgreSQL database with the matched records from streaming data, with same route_id, truck_id and departure_date.
 
 
-### Sagemaker pipeline in Unified Studio 
+#### Sagemaker pipeline in Unified Studio 
 In Unified Studio, the SageMaker pipeline is developed within a single notebook that is linked to a Git repository. Each step of the streaming pipeline is implemented as a separate .py file within this notebook environment. These files are then pushed to AWS CodeCommit, which integrates with AWS CodePipeline to provide CI/CD capabilities—ensuring version control, automated testing, and seamless deployment of pipeline updates.
 
 
-### Docker Image 
+#### Docker Image 
 
 Running a SageMaker pipeline step inside a Docker image provides a custom environment where all required Python packages, dependencies, and system libraries can be pre-installed, eliminating reliance on SageMaker’s default setup. This ensures consistency and reproducibility across runs, which is especially important for production ML pipelines handling continuous streaming data. Using a Docker image also simplifies CI/CD integration, as the image can be built, tested, and pushed to ECR through CodePipeline, allowing SageMaker to pull a fully tested environment for each pipeline execution.
 
