@@ -93,6 +93,35 @@ The feature engineering process can be streamlined as follows:
  All raw DataFrames undergo transformation into meaningful features through a series of preprocessing and alignment steps and processed DataFrames are consolidated to form the final engineered dataset, which is subsequently stored as a feature group in the Hopsworks feature store.
 - Storage and Accessibility:  The final engineered DataFrames with their group version and statistical features are stored in the Hopsworks feature store, making them readily available for model training and real-time inference.
 
+## Data Preprocessing 
+
+The final dataset was retrieved from the Hopsworks feature store and subsequently split into training, validation, and test sets. Additional preprocessing steps included one-hot encoding of categorical variables and scaling of numerical features to prepare the data for machine learning models. Notably, certain null values—such as those in the `load_capacity_pounds` column was imputed after the data split to prevent data leakage and maintain the integrity of the model evaluation process.
+
+
+## Model building and Experiment Tracking 
+
+Model building involves preparing data, selecting suitable algorithms, engineering features, tuning hyperparameters, and training machine learning models to solve specific tasks. It is an iterative process focused on improving accuracy and generalization. Experiment tracking complements this by systematically recording configurations, metrics, datasets, and code versions to ensure reproducibility and enable performance comparisons across runs. Tools like Weights & Biases automate this process, making it easier to monitor progress, optimize models, and collaborate effectively.
+
+#### Weight & Bias 
+Weights & Biases (W&B) is a robust experiment tracking platform that enables efficient monitoring, visualization, and analysis of machine learning workflows. It supports experiment management, performance tracking, hyperparameter tuning, and team collaboration. In this project, W&B is used to log training metrics and store model artifacts for advanced tracking and reproducibility, while models are also saved locally using joblib for deployment and backup purposes. Connecting to W&B ensures transparency, consistency, and scalability throughout the model development lifecycle.
+
+Three machine learning models, **Logistic Regression**, **XGBoostClassifier**, and **Random Forest Classifier** were built and evaluated to predict whether a truck would be delayed (a binary classification task). The models were compared based on their F1 score, which was chosen  because it provides a better balance between precision and recall, especially in cases where class imbalance may exist. This ensures that both false positives and false negatives are considered when assessing model performance, which is critical for operational decisions related to delivery delays.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Model Monitoring and Automation 
