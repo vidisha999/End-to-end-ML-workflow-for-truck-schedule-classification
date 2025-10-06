@@ -82,6 +82,18 @@ The following bos plots shows the relationship between the different drivers att
 
 The analysis of driver ratings based on gender and driving style reveals patterns that may help identify performance trends and areas for improvement. Understanding how these factors influence customer satisfaction and driving efficiency can guide targeted training and support initiatives.
 
+## Feature Engineering - Leveraging Hopsworks Feature Store for Scalable Feature Engineering
+
+A feature store serves as a centralized platform for storing, sharing, and managing features used in machine learning workflows. It plays a critical role in ensuring consistency, reusability, and governance across both training and inference pipelines.
+The feature engineering process can be streamlined as follows:
+- Feature Group Creation: Define feature groups for each relevant DataFrame, such as `truck data feature group`, `truck data feature group`, `route data feature group` etc.
+- Feature Engineering: After establishing a connection to the Hopsworks project, each primary feature group is retrieved. The following preprocessing steps are applied to the raw DataFrames:
+        - Data Cleaning: Handle null and missing values through appropriate imputation techniques.
+        - Date Standardization: Convert date columns to a standardized datetime format.
+ All raw DataFrames undergo transformation into meaningful features through a series of preprocessing and alignment steps and processed DataFrames are consolidated to form the final engineered dataset, which is subsequently stored as a feature group in the Hopsworks feature store.
+- Storage and Accessibility:  The final engineered DataFrames with their group version and statistical features are stored in the Hopsworks feature store, making them readily available for model training and real-time inference.
+
+
 
 ## Model Monitoring and Automation 
 
@@ -101,7 +113,6 @@ There are several ways to monitor the model in order to determine if the model s
 
  #### Evidendently AI 
 In this project, Evidently AI is used to perform model monitoring checks. It is an open-source Python library that compares new incoming data (streaming or batch) against reference data (historical or training data) to detect data drift, target drift, missing values, or changes in feature distributions, and to validate ML model performance. The library comes with built-in tests for each of these activities, automatically analyzing data and model predictions, generating clear metrics and visual reports. This enables teams to quickly identify issues, ensure data consistency, and maintain reliable model performance without writing custom checks.
-
 
 ### Automation for Sagemaker Pipeline Execution 
 
