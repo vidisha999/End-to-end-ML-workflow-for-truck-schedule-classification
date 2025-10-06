@@ -102,7 +102,7 @@ The final dataset was retrieved from the Hopsworks feature store and subsequentl
 
 Model building involves preparing data, selecting suitable algorithms, engineering features, tuning hyperparameters, and training machine learning models to solve specific tasks. It is an iterative process focused on improving accuracy and generalization. Experiment tracking complements this by systematically recording configurations, metrics, datasets, and code versions to ensure reproducibility and enable performance comparisons across runs. Tools like Weights & Biases automate this process, making it easier to monitor progress, optimize models, and collaborate effectively.
 
-#### Weight & Bias 
+### Weight & Bias 
 Weights & Biases (W&B) is a robust experiment tracking platform that enables efficient monitoring, visualization, and analysis of machine learning workflows. It supports experiment management, performance tracking, hyperparameter tuning, and team collaboration. In this project, W&B is used to log training metrics and store model artifacts for advanced tracking and reproducibility, while models are also saved locally using joblib for deployment and backup purposes. Connecting to W&B ensures transparency, consistency, and scalability throughout the model development lifecycle.
 
 Three machine learning models, **Logistic Regression**, **XGBoostClassifier**, and **Random Forest Classifier** were built and evaluated to predict whether a truck would be delayed (a binary classification task). The models were compared based on their F1 score, which was chosen  because it provides a better balance between precision and recall, especially in cases where class imbalance may exist. This ensures that both false positives and false negatives are considered when assessing model performance, which is critical for operational decisions related to delivery delays.
@@ -111,7 +111,13 @@ Three machine learning models, **Logistic Regression**, **XGBoostClassifier**, a
 
 
 
+### Model Performance Comparison
 
+|Model Name|Train Recall|Train F1 Score|Validation Recall|Validation F1 Score|Test Recall|Test F1 Score|
+|--|--|--|--|--|--|--|
+|Logistic Regression| 0.5378|0.607318|	0.594488|	0.565543|	0.563877|	0.565543|
+|Random Forest Classifier| 0.9909 | 0.9823 | 0.6338| 0.4981| 0.5248| 0.4981|
+| XGBoost Classifier| 0.7502| 0.6269| 0.6677| 0.5581| 0.6056| 0.5581|
 
 
 
