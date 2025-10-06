@@ -50,8 +50,20 @@ The MySQL database had store the tables: `drivers_details1`,`city_weather`,`truc
    -  truck_details: Information about the trucks used in logistics operations
    -  traffic_details: Traffic-related data
    -  truck_schedule_data: Schedules and timing information for trucks
+## Exploratory Data Analysis (EDA) 
 
+The following insights were gained from the EDA. 
+The distribution of major numerical variables such as `age`,`experience`,`ratings`,`average_speed_mph` were  viusllay represented as shown below. 
 
+![image1](Images/img6.png)
+
+*Image 1 : The desnity plots for the distribution of numerical variables* 
+
+Driver oerformance and beahvior according to above plot shows , 
+- Age & Experience: Driver age is normally distributed, peaking at 45–50 years. Experience is slightly left-skewed, with most drivers having 5–20 years of experience. Older drivers may be more prone to fatigue and health issues, highlighting the need to match routes with experience levels to avoid delays.
+- Efficiency & Training: Analyzing the link between experience and driving efficiency is crucial. Implementing rest policies and offering training on proper techniques can enhance performance.
+- Low Ratings: A significant number of drivers have low ratings, which may indicate poor performance or customer dissatisfaction. Further investigation is recommended.
+- Driving Styles: The bimodal distribution of average speeds (peaks at 45 and 60 mph) suggests two distinct driving styles—cautious and aggressive. Both extremes may negatively impact ETA, fuel efficiency, and safety. Categorizing drivers by speed behavior can help optimize operations.
 
 ## Model Monitoring and Automation 
 
