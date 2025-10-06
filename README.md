@@ -108,9 +108,6 @@ Weights & Biases (W&B) is a robust experiment tracking platform that enables eff
 Three machine learning models, **Logistic Regression**, **XGBoostClassifier**, and **Random Forest Classifier** were built and evaluated to predict whether a truck would be delayed (a binary classification task). The models were compared based on their F1 score, which was chosen  because it provides a better balance between precision and recall, especially in cases where class imbalance may exist. This ensures that both false positives and false negatives are considered when assessing model performance, which is critical for operational decisions related to delivery delays.
 
 
-
-
-
 ### Model Performance Comparison
 
 |Model Name|Train Recall|Train F1 Score|Validation Recall|Validation F1 Score|Test Recall|Test F1 Score|
@@ -119,14 +116,13 @@ Three machine learning models, **Logistic Regression**, **XGBoostClassifier**, a
 |Random Forest Classifier| 0.9909 | 0.9823 | 0.6338| 0.4981| 0.5248| 0.4981|
 | XGBoost Classifier| 0.7502| 0.6269| 0.6677| 0.5581| 0.6056| 0.5581|
 
+Based on the results, XGBoost demonstrates balanced performance across training, validation, and test sets, making it the strongest candidate before hyperparameter tuning. While Random Forest shows signs of overfitting, it can be further optimized through hyperparameter tuning. This may improve its generalization and potentially outperform XGBoost, helping identify the optimal model configuration.
 
+### Hyperparameter Tuning
 
+The Random Forest model is optimized using Weights & Biases (W&B) Sweeps, which automate hyperparameter tuning. A sweep configuration is defined to explore combinations of **n_estimators**, **max_depth**, and **min_samples_split** using grid search. The sweep is initialized and run via a W&B agent, which iteratively rebuilds the model different parameter sets. Each run logs training, validation, and test F1 scores, visualizes model performance, and saves the best-performing model both locally (using joblib) and as a W&B artifact for reproducibility and tracking.
 
-
-
-
-
-
+By filtering W&B runs based on the highest F1 scores and reviewing model artifacts, XGBoost remains the most effective model, demonstrating superior generalization and consistency.Despite hyperparameter tuning of the Random Forest model using W&B Sweeps, the XGBoost Classifier still outperforms it across training, validation, and test sets. 
 
 
 
