@@ -53,17 +53,31 @@ The MySQL database had store the tables: `drivers_details1`,`city_weather`,`truc
 ## Exploratory Data Analysis (EDA) 
 
 The following insights were gained from the EDA. 
-The distribution of major numerical variables such as `age`,`experience`,`ratings`,`average_speed_mph` were  viusllay represented as shown below. 
+
+The distributions of key numerical variables  `age`, `experience`, `ratings`, and `average_speed_mph` were visually represented to provide insights into driver demographics and performance patterns.
 
 ![image1](Images/img6.png)
 
-*Image 1 : The desnity plots for the distribution of numerical variables* 
+*Image 1 : Desnity plots for the distribution of numerical variables* 
 
-Driver oerformance and beahvior according to above plot shows , 
+Driver performance and beahvior according to above plot shows , 
 - Age & Experience: Driver age is normally distributed, peaking at 45–50 years. Experience is slightly left-skewed, with most drivers having 5–20 years of experience. Older drivers may be more prone to fatigue and health issues, highlighting the need to match routes with experience levels to avoid delays.
 - Efficiency & Training: Analyzing the link between experience and driving efficiency is crucial. Implementing rest policies and offering training on proper techniques can enhance performance.
 - Low Ratings: A significant number of drivers have low ratings, which may indicate poor performance or customer dissatisfaction. Further investigation is recommended.
 - Driving Styles: The bimodal distribution of average speeds (peaks at 45 and 60 mph) suggests two distinct driving styles—cautious and aggressive. Both extremes may negatively impact ETA, fuel efficiency, and safety. Categorizing drivers by speed behavior can help optimize operations.
+
+The follolwing plot shows hpow the truck age, their load capacity and mileage influence the fleet efficiency. 
+
+![image2](Images/imag2.png)
+
+*Image 2: Evaluating Truck Age and Mileage for Fleet Optimization*
+
+The distribution of truck age is approximately normal, with most vehicles between 8 and 12 years old. In contrast, vehicle mileage shows a bimodal distribution, suggesting two distinct groups: one with lower mileage (likely newer trucks) and another with higher mileage (likely older or heavily used trucks).Analyzing the relationship between truck age and fuel efficiency can help identify vehicles nearing the end of their useful life. Replacing older, less efficient trucks with low-mileage, fuel-efficient models could improve overall fleet performance and reduce operational costs.
+
+
+
+
+
 
 ## Model Monitoring and Automation 
 
