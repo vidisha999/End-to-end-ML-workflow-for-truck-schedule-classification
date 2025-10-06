@@ -1,7 +1,11 @@
 ## Business Problem 
 
+Delayed truck shipments in the logistics industry lead to increased operational costs and reduced customer satisfaction. Accurately predicting delays enables companies to improve resource allocation, optimize route planning, reduce penalties, and provide more reliable delivery schedules,ultimately enhancing efficiency and competitiveness.
+
+
 ## Project Goal
 
+The primary  objective is to build a machine learning workflow that accurately predicts truck delays, enabling logistics companies to take proactive measures. By tracking delay patterns and forecasting potential disruptions, the system helps improve fleet scheduling, optimize resource allocation, and enhance overall transportation efficiency.
 ## Project Architecture 
 
  I.  *Cloud-Native Data Foundation:*
