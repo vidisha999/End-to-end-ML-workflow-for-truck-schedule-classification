@@ -58,7 +58,7 @@ The distributions of key numerical variables  `age`, `experience`, `ratings`, an
 
 ![image1](Images/img6.png)
 
-*Image 1 : Desnity plots for the distribution of numerical variables* 
+   *Image 1 : Desnity plots for the distribution of numerical variables* 
 
 Driver performance and beahvior according to above plot shows , 
 - Age & Experience: Driver age is normally distributed, peaking at 45–50 years. Experience is slightly left-skewed, with most drivers having 5–20 years of experience. Older drivers may be more prone to fatigue and health issues, highlighting the need to match routes with experience levels to avoid delays.
@@ -70,13 +70,17 @@ The follolwing plot shows hpow the truck age, their load capacity and mileage in
 
 ![image2](Images/imag2.png)
 
-*Image 2: Evaluating Truck Age and Mileage for Fleet Optimization*
+   *Image 2: Evaluating Truck Age and Mileage for Fleet Optimization*
 
 The distribution of truck age is approximately normal, with most vehicles between 8 and 12 years old. In contrast, vehicle mileage shows a bimodal distribution, suggesting two distinct groups: one with lower mileage (likely newer trucks) and another with higher mileage (likely older or heavily used trucks).Analyzing the relationship between truck age and fuel efficiency can help identify vehicles nearing the end of their useful life. Replacing older, less efficient trucks with low-mileage, fuel-efficient models could improve overall fleet performance and reduce operational costs.
 
+The following bos plots shows the relationship between the different drivers attributes. 
 
+![image3](Images/img3.png)
 
+  *Image 3:Driver Ratings by Gender and Driving Style*
 
+The analysis of driver ratings based on gender and driving style reveals patterns that may help identify performance trends and areas for improvement. Understanding how these factors influence customer satisfaction and driving efficiency can guide targeted training and support initiatives.
 
 
 ## Model Monitoring and Automation 
